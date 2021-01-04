@@ -12,9 +12,16 @@ var (
 	keyText  = []byte("********************************")
 )
 
-func init()  {
-	if key:=os.Getenv("HUAWEI_CSI_KEY");key!=""{
-		keyText=[]byte(key)
+func init() {
+	if key := os.Getenv("HUAWEI_CSI_KEY"); key != "" {
+		k := len(key)
+		switch k {
+		default:
+			panic("HUAWEI_CSI_KEY length wrong")
+		case 32:
+			break
+		}
+		keyText = []byte(key)
 	}
 }
 
